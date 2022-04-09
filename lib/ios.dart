@@ -10,10 +10,10 @@ Future<void> overwriteInfoPlist(String? name) async {
 
   // there is no plist parser...
   // this is not good way
-  bool requireChange = false;
+  bool change = false;
   for (int x = 0; x < lines.length; x++) {
     String line = lines[x];
-    if (line.contains('CFBundleName')) {
+    if (line.contains('CFBundleName') || line.contains('CFBundleDisplayName')) {
       requireChange = true;
       continue;
     }
