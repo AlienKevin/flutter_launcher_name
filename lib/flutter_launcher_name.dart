@@ -5,19 +5,25 @@ import 'dart:io';
 import 'package:flutter_launcher_name/android.dart' as android;
 import 'package:flutter_launcher_name/constants.dart' as constants;
 import 'package:flutter_launcher_name/ios.dart' as ios;
+import 'package:flutter_launcher_name/web.dart' as web;
 import 'package:yaml/yaml.dart';
 
 exec() {
-  print('start');
+  print('flutter_launcher_name: Starting to overwrite app names.');
 
   final config = loadConfigFile();
 
   final newName = config['name'];
 
   android.overwriteAndroidManifest(newName);
+  print('Finished overwriting Android name.');
   ios.overwriteInfoPlist(newName);
+  print('Finished overwriting iOS name.');
+  web.overwriteIndexHtmlAndManifest(newName);
+  print('Finished overwriting web name.');
 
-  print('exit');
+  print(
+      'flutter_launcher_name: Successfully overwrote names in Android, iOS, and Web.');
 }
 
 Map<String, dynamic> loadConfigFile() {
