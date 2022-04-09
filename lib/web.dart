@@ -23,9 +23,9 @@ Future<void> overwriteIndexHtmlAndManifest(String? name) async {
   for (int x = 0; x < webManifestLines.length; x++) {
     String line = webManifestLines[x];
     if (RegExp('"name"\\s*:\\s*".*",\$').hasMatch(line)) {
-      webManifestLines[x] = '    "name": "$name"';
+      webManifestLines[x] = '    "name": "$name",';
     } else if (RegExp('"short_name"\\s*:\\s*".*",\$').hasMatch(line)) {
-      webManifestLines[x] = '    "short_name": "$name"';
+      webManifestLines[x] = '    "short_name": "$name",';
     }
   }
   webManifestFile.writeAsString(webManifestLines.join('\n'));
