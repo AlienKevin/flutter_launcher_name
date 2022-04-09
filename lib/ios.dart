@@ -19,7 +19,7 @@ Future<void> overwriteInfoPlist(String? name) async {
     }
 
     if (requireChange) {
-      lines[x] = '	<string>$name</string>';
+      lines[x] = '\t\t<string>$name</string>';
       requireChange = false;
     }
   }
